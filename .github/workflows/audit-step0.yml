@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - audit/step0-verification
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
