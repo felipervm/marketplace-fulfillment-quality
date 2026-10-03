@@ -70,4 +70,9 @@ jobs:
           print(diff if diff.strip() else "NO DIFF")
           PY
       - name: Print verification report
-        run: cat audit/step0_report.txt
+        run: |
+          cat audit/step0_report.txt
+          for f in data/impact_baselines.csv data/statistical_tests.csv data/root_cause_change_by_reason.csv data/root_cause_change_by_type.csv data/store_concentration_summary.csv data/retailer_c_store_adjusted_excess.csv data/monitor_alert_summary.csv data/headline_metrics.csv; do
+            echo "===== $f ====="
+            cat "$f"
+          done
