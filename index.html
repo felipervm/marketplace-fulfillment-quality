@@ -10,12 +10,12 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}.wrap{max-width:1360px;margin:0 auto;padding:0 28px}
 .nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:rgba(243,241,234,.88);border-bottom:1px solid rgba(218,215,205,.75)}.nav-in{max-width:1360px;margin:0 auto;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-weight:760;letter-spacing:-.02em}.nav-meta{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
 .hero{min-height:82vh;display:grid;align-items:center;padding:80px 0 60px}.hero-grid{display:grid;grid-template-columns:1.45fr .55fr;gap:70px;align-items:end}.kicker,.story-number{color:var(--green);text-transform:uppercase;letter-spacing:.15em;font-size:12px;font-weight:800}.hero h1{font-size:clamp(56px,7vw,104px);line-height:.9;letter-spacing:-.055em;margin:14px 0 24px;max-width:1000px}.hero p,.story p{font-size:16px;line-height:1.62;color:var(--muted);max-width:760px}.hero-side .num{font-size:76px;font-weight:850;letter-spacing:-.06em;line-height:.9}.hero-side .lab{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.45}
-.band{padding:100px 0;border-top:1px solid var(--line)}.band.dark{background:var(--dark);color:white;border-top:0}.story-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:64px;align-items:start}.story h2{font-size:clamp(40px,5vw,70px);line-height:.98;letter-spacing:-.04em;margin:12px 0 24px}.chart{background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden;padding:14px;min-height:420px}
+.band{padding:100px 0;border-top:1px solid var(--line)}.band.dark{background:var(--dark);color:white;border-top:0}.story-grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:64px;align-items:start}.story-grid>*{min-width:0}.story h2{font-size:clamp(40px,5vw,70px);line-height:.98;letter-spacing:-.04em;margin:12px 0 24px}.chart{width:100%;height:460px;min-height:460px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden}.chart.tall{height:560px;min-height:560px}
 .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.metric{padding:22px 0;border-top:1px solid var(--line)}.metric .v{font-size:42px;font-weight:850;letter-spacing:-.05em}.metric .t{margin-top:6px;font-size:13px;color:var(--muted);line-height:1.45}.big-stat{font-size:clamp(70px,9vw,138px);font-weight:850;letter-spacing:-.07em;line-height:.82}.big-label{color:var(--muted);margin-top:16px;font-size:15px;max-width:430px;line-height:1.5}
 .quote{font-size:clamp(34px,4.3vw,62px);line-height:1.05;letter-spacing:-.035em;max-width:1100px;margin:0}.quote em{color:#48D17A;font-style:normal}.insight-strip{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.insight{padding:22px;border:1px solid #2A322D;border-radius:22px;background:#121713}.insight .v{font-size:40px;font-weight:850;letter-spacing:-.04em}.insight .t{color:#A3ACA5;font-size:13px;line-height:1.5;margin-top:8px}
 .note{font-size:13px;color:var(--muted);line-height:1.55;margin-top:16px}.dark .note{color:#A3ACA5}.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}.actions{display:grid;gap:12px}.action{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--line)}.action .n{color:var(--green);font-size:12px;font-weight:800}.action h4{margin:0 0 6px;font-size:20px}.action p{margin:0;color:var(--muted);line-height:1.5;font-size:14px}
 .method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.method{border-top:1px solid var(--line);padding-top:18px}.method h4{margin:0 0 8px}.method p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}.footer{padding:36px 0 46px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.on{opacity:1;transform:none}
-@media(max-width:900px){.hero-grid,.story-grid,.action-grid,.method-grid{grid-template-columns:1fr;gap:34px}.hero{min-height:auto;padding:72px 0}.metric-row,.insight-strip{grid-template-columns:1fr}.hero-side .num{font-size:60px}}
+@media(max-width:900px){.hero-grid,.story-grid,.action-grid,.method-grid{grid-template-columns:1fr;gap:34px}.hero{min-height:auto;padding:72px 0}.metric-row,.insight-strip{grid-template-columns:1fr}.hero-side .num{font-size:60px}.chart{height:420px;min-height:420px}.chart.tall{height:520px;min-height:520px}}@media(max-width:560px){.wrap{padding:0 18px}.nav-in{padding:14px 18px}.nav-meta{display:none}.band{padding:72px 0}.hero h1{font-size:clamp(46px,14vw,68px)}.chart{height:390px;min-height:390px;border-radius:20px}.chart.tall{height:500px;min-height:500px}.metric .v{font-size:36px}}
 </style>
 </head>
 <body>
@@ -31,7 +31,7 @@
 
 <section class="band"><div class="wrap story-grid reveal"><div class="story"><div class="story-number">03 · What grew?</div><h2>Retailer-side failures explain most of the net increase.</h2><p>September shares alone do not tell us what changed. This view compares cancellation incidence per 1,000 Retailer C orders in Jul–Aug with September.</p><div class="metric-row"><div class="metric"><div class="v">+13.14</div><div class="t">Retailer-driven cancellations per 1,000 orders</div></div><div class="metric"><div class="v">+86.5</div><div class="t">Implied excess retailer-driven cancellations</div></div><div class="metric"><div class="v">66.1%</div><div class="t">Share of the net cancellation increase</div></div></div><p class="note">Retailer-initiated out-of-stock rose from 2.46 to 15.05 per 1,000 orders (+12.58), consistent with about 82.8 excess cancellations. Item and replacement issues rose by 4.27 per 1,000, consistent with about 28.1 excess. Some other failure modes declined and partially offset these increases.</p></div><div id="drivers" class="chart"></div></div></section>
 
-<section class="band"><div class="wrap story-grid reveal"><div class="story"><div class="story-number">04 · Store concentration</div><h2>The excess is concentrated, after adjusting for daypart.</h2><p>Expected cancellations are calculated from Retailer C’s Jul–Aug daypart rates. Eleven of 40 stores have Poisson z ≥ 3 in September.</p><div class="metric-row"><div class="metric"><div class="v">11</div><div class="t">flagged stores</div></div><div class="metric"><div class="v">27.6%</div><div class="t">of Retailer C September orders</div></div><div class="metric"><div class="v">99.7%</div><div class="t">of net daypart-adjusted excess</div></div></div><p class="note">This is an ex-post diagnostic ranking. It is useful for investigation prioritization, not a prospective causal estimate or production control limit.</p></div><div id="stores" class="chart"></div></div></section>
+<section class="band"><div class="wrap story-grid reveal"><div class="story"><div class="story-number">04 · Store concentration</div><h2>The excess is concentrated, after adjusting for daypart.</h2><p>Expected cancellations are calculated from Retailer C’s Jul–Aug daypart rates. Eleven of 40 stores have Poisson z ≥ 3 in September.</p><div class="metric-row"><div class="metric"><div class="v">11</div><div class="t">flagged stores</div></div><div class="metric"><div class="v">27.6%</div><div class="t">of Retailer C September orders</div></div><div class="metric"><div class="v">99.7%</div><div class="t">of net daypart-adjusted excess</div></div></div><p class="note">This is an ex-post diagnostic ranking. It is useful for investigation prioritization, not a prospective causal estimate or production control limit.</p></div><div id="stores" class="chart tall"></div></div></section>
 
 <section class="band dark"><div class="wrap reveal"><div class="story-number">05 · Monitoring</div><p class="quote" style="margin-top:14px">A monitor that adapts too quickly can <em>normalize the problem it is supposed to detect.</em></p><div class="insight-strip"><div class="insight"><div class="v">1 / 8</div><div class="t">Rolling 14d + 2σ alert days: Retailer C / other retailers.</div></div><div class="insight"><div class="v">12 / 5</div><div class="t">Fixed Jul–Aug baseline alert days: C / others.</div></div><div class="insight"><div class="v">6 / 1</div><div class="t">Sustained 3-day alert days: C / others.</div></div></div><div id="alerts" class="chart" style="margin-top:28px"></div><p class="note">All rules require at least 100 orders per retailer-day. “Other retailer” alerts are treated as false alerts in this simulated evaluation. Contiguous episodes for C are 1 rolling, 8 fixed and 4 sustained; the other retailers have 8, 5 and 1 respectively.</p></div></section>
 
@@ -44,58 +44,65 @@
 <footer class="wrap footer"><span>Felipe Mattos · Operations / Data Analytics</span><span>Independent portfolio project · Simulated data · Not affiliated with Instacart</span></footer>
 
 <script>
-const cfg={displayModeBar:false,responsive:true};
-function layoutBase(extra={}){return{paper_bgcolor:'#FAF9F4',plot_bgcolor:'#FAF9F4',font:{family:'Inter,Arial,sans-serif',color:'#111512'},margin:{l:60,r:32,t:35,b:60},...extra};}
+const cfg={displayModeBar:false,displaylogo:false,responsive:true,scrollZoom:false};
+function layoutBase(extra={}){return{autosize:true,paper_bgcolor:'#FAF9F4',plot_bgcolor:'#FAF9F4',font:{family:'Inter,Arial,sans-serif',color:'#111512',size:12},margin:{l:64,r:34,t:52,b:62},hoverlabel:{bgcolor:'#111512',font:{color:'#fff'}},...extra};}
 
 Plotly.newPlot('trend',[{
  x:['Jul 2026','Aug 2026','Sep 2026'],y:[3.3929,2.9054,5.1368],mode:'lines+markers+text',
- text:['3.39%','2.91%','5.14%'],textposition:'top center',line:{color:'#2A9D5B',width:4},
+ text:['3.39%','2.91%','5.14%'],textposition:'top center',cliponaxis:false,line:{color:'#2A9D5B',width:4},
  marker:{size:11,color:'#FAF9F4',line:{color:'#2A9D5B',width:3}},
  error_y:{type:'data',symmetric:false,array:[0.4624,0.4284,0.5600],arrayminus:[0.4086,0.3748,0.5077],color:'#2A9D5B',thickness:1.5,width:5},
  hovertemplate:'%{x}<br>%{y:.2f}%<extra></extra>'
-}],layoutBase({yaxis:{range:[0,6.4],gridcolor:'#E8E4DA',title:'Cancellation rate (%)'},xaxis:{gridcolor:'#E8E4DA'},shapes:[{type:'line',xref:'paper',x0:0,x1:1,y0:2.6601,y1:2.6601,line:{color:'#F08C46',dash:'dash'}}],annotations:[{x:1,xref:'paper',y:2.6601,text:'Sep peers 2.66% · 95% CI 2.47–2.86%',showarrow:false,xanchor:'right',font:{color:'#F08C46',size:11}}]}),cfg);
+}],layoutBase({margin:{l:64,r:34,t:66,b:62},yaxis:{range:[0,6.55],gridcolor:'#E8E4DA',zeroline:false,title:{text:'Cancellation rate (%)',standoff:10}},xaxis:{gridcolor:'#E8E4DA',fixedrange:true},shapes:[{type:'line',xref:'paper',x0:0,x1:1,y0:2.6601,y1:2.6601,line:{color:'#F08C46',dash:'dash',width:1.5}}],annotations:[{x:0.98,xref:'paper',y:2.6601,yshift:14,text:'Sep peers 2.66% · 95% CI 2.47–2.86%',showarrow:false,xanchor:'right',font:{color:'#F08C46',size:11},bgcolor:'#FAF9F4'}]}),cfg);
 
 Plotly.newPlot('daypart',[{
  type:'bar',x:['Morning','Afternoon','Evening'],y:[3.6830,2.4209,8.0027],
- marker:{color:['#2A9D5B','#7CBF8D','#F08C46']},text:['3.68%','2.42%','8.00%'],textposition:'outside',
+ marker:{color:['#2A9D5B','#7CBF8D','#F08C46']},text:['3.68%','2.42%','8.00%'],textposition:'outside',cliponaxis:false,
  error_y:{type:'data',symmetric:false,array:[1.4442,0.6529,1.0257],arrayminus:[1.0487,0.5169,0.9183],color:'#111512',thickness:1.3,width:5},
  hovertemplate:'%{x}<br>%{y:.2f}%<extra></extra>'
-}],layoutBase({yaxis:{range:[0,10],gridcolor:'#E8E4DA',title:'Cancellation rate (%)'},xaxis:{gridcolor:'#E8E4DA'}}),cfg);
+}],layoutBase({margin:{l:64,r:28,t:70,b:58},yaxis:{range:[0,10.4],gridcolor:'#E8E4DA',zeroline:false,title:{text:'Cancellation rate (%)',standoff:10}},xaxis:{gridcolor:'#E8E4DA',fixedrange:true}}),cfg);
 
 Plotly.newPlot('drivers',[{
  type:'bar',orientation:'h',
- y:['customer_driven','instacart_driven','unbatchable','shopper_driven','other','retailer_driven'],
+ y:['Customer-driven','Instacart-driven','Unbatchable','Shopper-driven','Other','Retailer-driven'],
  x:[-2.0231,-0.2704,2.2638,3.1953,3.5850,13.1409],
  marker:{color:['#BCC0BA','#BCC0BA','#7CBF8D','#7CBF8D','#7CBF8D','#2A9D5B']},
- text:['−2.02','−0.27','+2.26','+3.20','+3.59','+13.14'],textposition:'outside',
+ text:['−2.02','−0.27','+2.26','+3.20','+3.59','+13.14'],textposition:'outside',cliponaxis:false,
  hovertemplate:'%{y}<br>Change %{x:.2f} per 1,000<extra></extra>'
-}],layoutBase({xaxis:{range:[-3,15],zeroline:true,zerolinecolor:'#111512',gridcolor:'#E8E4DA',title:'Change in cancellations per 1,000 orders: Sep vs Jul–Aug'},yaxis:{gridcolor:'#E8E4DA'}}),cfg);
+}],layoutBase({margin:{l:138,r:52,t:46,b:76},xaxis:{range:[-3.5,15.5],zeroline:true,zerolinecolor:'#111512',zerolinewidth:1,gridcolor:'#E8E4DA',title:{text:'Change in cancellations per 1,000 orders · Sep vs Jul–Aug',standoff:16},fixedrange:true},yaxis:{gridcolor:'#E8E4DA',fixedrange:true,automargin:true}}),cfg);
 
 Plotly.newPlot('stores',[{
  type:'bar',orientation:'h',
  y:['C014','C021','C011','C029','C002','C024','C037','C007','C005','C018','C033'],
  x:[8.89,9.12,9.17,9.45,11.09,11.19,11.57,12.37,13.62,15.82,18.85],
  marker:{color:'#F08C46'},
+ text:['8.89','9.12','9.17','9.45','11.09','11.19','11.57','12.37','13.62','15.82','18.85'],textposition:'outside',cliponaxis:false,
  hovertemplate:'%{y}<br>Daypart-adjusted excess %{x:.2f}<extra></extra>'
-}],layoutBase({xaxis:{gridcolor:'#E8E4DA',title:'Observed minus expected cancellations'},yaxis:{gridcolor:'#E8E4DA'}}),cfg);
+}],layoutBase({margin:{l:72,r:58,t:42,b:72},xaxis:{range:[0,21],gridcolor:'#E8E4DA',zeroline:false,title:{text:'Observed minus expected cancellations',standoff:14},fixedrange:true},yaxis:{gridcolor:'#E8E4DA',fixedrange:true,automargin:true,categoryorder:'array',categoryarray:['C014','C021','C011','C029','C002','C024','C037','C007','C005','C018','C033']}}),cfg);
 
 const retailers=['A','B','C','D','E','F'];
 Plotly.newPlot('alerts',[
  {type:'bar',name:'Rolling 14d + 2σ',x:retailers,y:[1,2,1,0,2,3],marker:{color:'#B7BBB5'}},
  {type:'bar',name:'Fixed Jul–Aug + 2σ',x:retailers,y:[0,1,12,0,0,4],marker:{color:'#2A9D5B'}},
  {type:'bar',name:'3-day sustained',x:retailers,y:[0,0,6,0,0,1],marker:{color:'#F08C46'}}
-],layoutBase({barmode:'group',legend:{orientation:'h'},xaxis:{title:'Retailer',gridcolor:'#E8E4DA'},yaxis:{range:[0,13],gridcolor:'#E8E4DA',title:'September alert days'}}),cfg);
+],layoutBase({margin:{l:62,r:26,t:86,b:62},barmode:'group',bargap:.24,bargroupgap:.08,legend:{orientation:'h',x:0,y:1.16,xanchor:'left',yanchor:'top'},xaxis:{title:{text:'Retailer',standoff:12},gridcolor:'#E8E4DA',fixedrange:true},yaxis:{range:[0,13],dtick:2,gridcolor:'#E8E4DA',zeroline:false,title:{text:'September alert days',standoff:10},fixedrange:true}}),cfg);
 
 Plotly.newPlot('root',[{
  type:'bar',orientation:'h',
- y:['instacart_driven','unbatchable','shopper_driven','customer_driven','other','retailer_driven'],
+ y:['Instacart-driven','Unbatchable','Shopper-driven','Customer-driven','Other','Retailer-driven'],
  x:[2.96,10.65,14.50,14.79,16.27,40.83],
  marker:{color:['#BCC0BA','#BCC0BA','#BCC0BA','#BCC0BA','#BCC0BA','#2A9D5B']},
- text:['3.0%','10.7%','14.5%','14.8%','16.3%','40.8%'],textposition:'outside',
+ text:['3.0%','10.7%','14.5%','14.8%','16.3%','40.8%'],textposition:'outside',cliponaxis:false,
  hovertemplate:'%{y}<br>%{x:.1f}%<extra></extra>'
-}],layoutBase({xaxis:{range:[0,45],gridcolor:'#E8E4DA',title:'Share of September cancellations (%)'},yaxis:{gridcolor:'#E8E4DA'}}),cfg);
+}],layoutBase({margin:{l:138,r:48,t:42,b:72},xaxis:{range:[0,45.5],gridcolor:'#E8E4DA',zeroline:false,title:{text:'Share of September cancellations (%)',standoff:14},fixedrange:true},yaxis:{gridcolor:'#E8E4DA',fixedrange:true,automargin:true}}),cfg);
 
-const els=document.querySelectorAll('.reveal');const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});els.forEach(el=>obs.observe(el));
+const chartIds=['trend','daypart','drivers','stores','alerts','root'];
+function resizeCharts(){chartIds.forEach(id=>{const el=document.getElementById(id);if(el&&el.data){Plotly.Plots.resize(el);}});}
+const els=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');requestAnimationFrame(()=>setTimeout(resizeCharts,80));}}),{threshold:.08});
+els.forEach(el=>obs.observe(el));
+window.addEventListener('load',()=>setTimeout(resizeCharts,120));
+let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(resizeCharts,120);});
 </script>
 </body>
 </html>
