@@ -30,41 +30,26 @@ def wilson_ci(successes, n, z=1.96):
 
 # 1) Monthly retailer metrics
 monthly = (
-    df.groupby(["month", "retailer"])
-      .agg(
-          orders=("order_id", "count"),
-          cancellations=("cancelled", "sum"),
-          cancellation_rate=("cancelled", "mean"),
-      )
-      .reset_index()
+    df[df["retailer"] == "Retailer C"]
+    .groupby("month")
+    .agg(
+        orders=("order_id", "count"),
+        cancellations=("cancelled", "sum"),
+        cancellation_rate=("cancelled", "mean"),
+    )
+    .reset_index()
 )
+monthly.insert(1, "retailer", "Retailer C")
 monthly["cancellation_rate_pct"] = monthly["cancellation_rate"] * 100
 monthly.to_csv(DATA / "monthly_retailer_metrics.csv", index=False)
 
 
 # 2) September retailer scorecard
-peer_rate = peers_sept["cancelled"].mean()
-
 scorecard = (
-    sept.groupby("retailer")
-        .agg(
-            orders=("order_id", "count"),
-            cancellations=("cancelled", "sum"),
-            cancellation_rate=("cancelled", "mean"),
-            late_rate=("late_delivery", "mean"),
-            reschedule_rate=("rescheduled", "mean"),
-            avg_fill_rate=("fill_rate", "mean"),
-        )
-        .reset_index()
-)
-
-for col in ["cancellation_rate", "late_rate", "reschedule_rate", "avg_fill_rate"]:
-    scorecard[col + "_pct"] = scorecard[col] * 100
-
-scorecard["peer_rate_excl_c_pct"] = peer_rate * 100
-scorecard["expected_cancellations_at_peer_rate"] = scorecard["orders"] * peer_rate
-scorecard["excess_cancellations_vs_peers"] = (
-    scorecard["cancellations"] - scorecard["expected_cancellations_at_peer_rate"]
+    sept.groupby("retailer")["cancelled"]
+    .mean()
+    .mul(100)
+    .reset_index(name="cancellation_rate_pct")
 )
 scorecard.to_csv(DATA / "september_retailer_scorecard.csv", index=False)
 
@@ -112,22 +97,16 @@ stores = (
     .agg(
         orders=("order_id", "count"),
         cancellations=("cancelled", "sum"),
-        cancellation_rate=("cancelled", "mean"),
-        late_rate=("late_delivery", "mean"),
-        reschedule_rate=("rescheduled", "mean"),
-        avg_fill_rate=("fill_rate", "mean"),
     )
     .reset_index()
 )
-
-for col in ["cancellation_rate", "late_rate", "reschedule_rate", "avg_fill_rate"]:
-    stores[col + "_pct"] = stores[col] * 100
-
 c_baseline = c_sept["cancelled"].mean()
-stores["expected_cancellations_at_c_baseline"] = stores["orders"] * c_baseline
 stores["excess_cancellations_vs_c_baseline"] = (
-    stores["cancellations"] - stores["expected_cancellations_at_c_baseline"]
+    stores["cancellations"] - stores["orders"] * c_baseline
 )
+stores = stores.sort_values(
+    "excess_cancellations_vs_c_baseline", ascending=False
+).head(8)
 stores.to_csv(DATA / "retailer_c_store_metrics.csv", index=False)
 
 
