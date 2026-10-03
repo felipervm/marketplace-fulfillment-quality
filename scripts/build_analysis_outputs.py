@@ -51,6 +51,7 @@ scorecard = (
     .mul(100)
     .reset_index(name="cancellation_rate_pct")
 )
+scorecard["cancellation_rate_pct"] = scorecard["cancellation_rate_pct"].round(2)
 scorecard.to_csv(DATA / "september_retailer_scorecard.csv", index=False)
 
 
@@ -86,7 +87,9 @@ root = (
     .size()
     .reset_index(name="cancellations")
 )
-root["share_pct"] = root["cancellations"] / root["cancellations"].sum() * 100
+root["share_pct"] = (
+    root["cancellations"] / root["cancellations"].sum() * 100
+).round(4)
 root = root.sort_values("cancellations", ascending=False)
 root.to_csv(DATA / "retailer_c_root_cause_share.csv", index=False)
 
