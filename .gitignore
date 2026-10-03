@@ -1,0 +1,8 @@
+# Generated raw dataset (100k rows)
+data/simulated_fulfillment_orders.csv
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
