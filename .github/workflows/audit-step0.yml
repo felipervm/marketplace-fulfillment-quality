@@ -24,6 +24,7 @@ jobs:
           python -m pip install -r requirements.txt
           python scripts/generate_simulated_data.py
           python scripts/build_analysis_outputs.py
+          python scripts/check_outputs.py
       - name: Build verification report
         run: |
           mkdir -p audit
