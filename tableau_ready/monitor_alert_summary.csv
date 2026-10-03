@@ -1,0 +1,7 @@
+retailer,rolling14_alert_days,rolling14_episodes,fixed_baseline_alert_days,fixed_baseline_episodes,sustained_3day_alert_days,sustained_3day_episodes
+Retailer A,1,1,0,0,0,0
+Retailer B,2,2,1,1,0,0
+Retailer C,1,1,12,8,6,4
+Retailer D,0,0,0,0,0,0
+Retailer E,2,2,0,0,0,0
+Retailer F,3,3,4,4,1,1

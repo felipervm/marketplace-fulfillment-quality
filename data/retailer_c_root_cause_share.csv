@@ -1,7 +1,7 @@
 cancellation_reason,cancellations,share_pct
-retailer_driven,138,40.8284
-other,55,16.2722
-customer_driven,50,14.7929
-shopper_driven,49,14.4970
-unbatchable,36,10.6509
-instacart_driven,10,2.9586
+retailer_driven,138,40.828402366863905
+other,55,16.272189349112427
+customer_driven,50,14.792899408284024
+shopper_driven,49,14.497041420118343
+unbatchable,36,10.650887573964498
+instacart_driven,10,2.9585798816568047

@@ -1,0 +1,21 @@
+cancellation_reason,cancellation_type,cancellations,share_pct
+retailer_driven,retailer initiated out of stock,99,29.289940828402365
+other,item and replacement issues,33,9.763313609467456
+retailer_driven,store early closure,29,8.579881656804734
+customer_driven,customer requested to cancel,24,7.100591715976331
+shopper_driven,shopper could not find address,22,6.508875739644971
+unbatchable,unable to reschedule as no option found,17,5.029585798816568
+shopper_driven,shopper unable to complete order,15,4.437869822485207
+customer_driven,incorrect customer information (phone/address),14,4.142011834319527
+shopper_driven,unable to access location,12,3.5502958579881656
+customer_driven,customer requested since order is late,12,3.5502958579881656
+unbatchable,unable to reschedule unbatchable,12,3.5502958579881656
+retailer_driven,cancelled by retailer,10,2.9585798816568047
+instacart_driven,manual_fraud,8,2.366863905325444
+other,store outage,7,2.0710059171597637
+other,other,7,2.0710059171597637
+unbatchable,unbatchable,7,2.0710059171597637
+other,wrong store hours,4,1.183431952662722
+other,too many replacements,2,0.591715976331361
+other,OnLine Pay Failure,2,0.591715976331361
+instacart_driven,missing charge log for delivery,2,0.591715976331361
