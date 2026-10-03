@@ -1,0 +1,4 @@
+daypart,orders,cancellations,rate_pct,ci_low_pct,ci_high_pct
+Morning,896,33,3.6830,2.623,5.143
+Afternoon,2685,65,2.4209,1.902,3.075
+Evening,2999,240,8.0027,7.076,9.039
