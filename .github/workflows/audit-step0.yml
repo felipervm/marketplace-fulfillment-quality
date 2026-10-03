@@ -81,7 +81,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/*.csv tableau_ready/*.csv
+          git add data ':!data/simulated_fulfillment_orders.csv' tableau_ready
           if git diff --cached --quiet; then
             echo "No generated output changes to commit."
           else
