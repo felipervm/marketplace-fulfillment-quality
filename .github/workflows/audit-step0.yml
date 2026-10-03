@@ -87,6 +87,5 @@ jobs:
             echo "No generated output changes to commit."
           else
             git commit -m "data: refresh audited analytical outputs [generated]"
-            git pull --rebase origin audit/step0-verification
             git push origin HEAD:audit/step0-verification
           fi
