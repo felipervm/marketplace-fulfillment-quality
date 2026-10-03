@@ -31,14 +31,115 @@
 </main>
 <footer class="wrap footer"><span>Felipe Mattos · Operations / Data Analytics</span><span>Independent portfolio project · Simulated data · Not affiliated with Instacart</span></footer>
 <script>
-const cfg={displayModeBar:false,responsive:true};
-const base={paper_bgcolor:'#FAF9F4',plot_bgcolor:'#FAF9F4',font:{family:'Inter,Arial,sans-serif',color:'#111512'},margin:{l:55,r:30,t:35,b:55},xaxis:{gridcolor:'#E8E4DA'},yaxis:{gridcolor:'#E8E4DA'}};
-Plotly.newPlot('trend',[{x:['2026-07','2026-08','2026-09'],y:[3.39,2.91,5.14],mode:'lines+markers+text',text:['3.39%','2.91%','5.14%'],textposition:'top center',line:{color:'#2A9D5B',width:4},marker:{size:11,color:'#FAF9F4',line:{color:'#2A9D5B',width:3}}}],{...base,shapes:[{type:'line',xref:'paper',x0:0,x1:1,y0:2.66,y1:2.66,line:{color:'#F08C46',dash:'dash'}}],annotations:[{x:1,xref:'paper',y:2.66,text:'Peers 2.66%',showarrow:false,xanchor:'right',font:{color:'#F08C46'}}]},cfg);
-Plotly.newPlot('daypart',[{type:'bar',x:['Morning','Afternoon','Evening'],y:[3.68,2.42,8.00],marker:{color:['#2A9D5B','#7CBF8D','#F08C46']},text:['3.68%','2.42%','8.00%'],textposition:'outside'}],base,cfg);
-Plotly.newPlot('stores',[{type:'bar',orientation:'h',y:['C029','C024','C002','C037','C007','C005','C018','C033'],x:[6.50,7.39,7.99,8.27,9.35,10.22,12.52,15.63],marker:{color:'#F08C46'}}],{...base,xaxis:{...base.xaxis,title:'Excess cancellations vs Retailer C baseline'}},cfg);
-const retailers=['A','B','C','D','E','F'];Plotly.newPlot('alerts',[{type:'bar',name:'Rolling 14d + 2σ',x:retailers,y:[1,2,1,0,2,3],marker:{color:'#B7BBB5'}},{type:'bar',name:'Fixed baseline',x:retailers,y:[0,1,12,0,0,4],marker:{color:'#2A9D5B'}},{type:'bar',name:'3-day sustained',x:retailers,y:[0,0,6,0,0,1],marker:{color:'#F08C46'}}],{...base,barmode:'group',legend:{orientation:'h'}},cfg);
-Plotly.newPlot('root',[{type:'bar',orientation:'h',y:['instacart_driven','unbatchable','shopper_driven','customer_driven','other','retailer_driven'],x:[3.0,10.7,14.5,14.8,16.3,40.8],marker:{color:['#BCC0BA','#BCC0BA','#BCC0BA','#BCC0BA','#BCC0BA','#2A9D5B']},text:['3.0%','10.7%','14.5%','14.8%','16.3%','40.8%'],textposition:'outside'}],{...base,xaxis:{...base.xaxis,title:'Share of cancellations (%)'}},cfg);
-const els=document.querySelectorAll('.reveal');const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.12});els.forEach(el=>obs.observe(el));
+const cfg = {displayModeBar:false, responsive:true};
+
+function layoutBase(extra = {}) {
+  return {
+    paper_bgcolor:'#FAF9F4',
+    plot_bgcolor:'#FAF9F4',
+    font:{family:'Inter,Arial,sans-serif', color:'#111512'},
+    margin:{l:55,r:30,t:35,b:55},
+    ...extra
+  };
+}
+
+Plotly.newPlot(
+  'trend',
+  [{
+    x:['Jul 2026','Aug 2026','Sep 2026'],
+    y:[3.39,2.91,5.14],
+    mode:'lines+markers+text',
+    text:['3.39%','2.91%','5.14%'],
+    textposition:'top center',
+    line:{color:'#2A9D5B',width:4},
+    marker:{size:11,color:'#FAF9F4',line:{color:'#2A9D5B',width:3}},
+    hovertemplate:'%{x}<br>%{y:.2f}%<extra></extra>'
+  }],
+  layoutBase({
+    xaxis:{type:'category',categoryorder:'array',categoryarray:['Jul 2026','Aug 2026','Sep 2026'],gridcolor:'#E8E4DA'},
+    yaxis:{type:'linear',range:[0,6.2],gridcolor:'#E8E4DA',title:'Cancellation rate (%)'},
+    shapes:[{type:'line',xref:'paper',x0:0,x1:1,y0:2.66,y1:2.66,line:{color:'#F08C46',dash:'dash'}}],
+    annotations:[{x:1,xref:'paper',y:2.66,text:'Peers 2.66%',showarrow:false,xanchor:'right',font:{color:'#F08C46'}}]
+  }),
+  cfg
+);
+
+Plotly.newPlot(
+  'daypart',
+  [{
+    type:'bar',
+    x:['Morning','Afternoon','Evening'],
+    y:[3.68,2.42,8.00],
+    marker:{color:['#2A9D5B','#7CBF8D','#F08C46']},
+    text:['3.68%','2.42%','8.00%'],
+    textposition:'outside',
+    hovertemplate:'%{x}<br>%{y:.2f}%<extra></extra>'
+  }],
+  layoutBase({
+    xaxis:{type:'category',categoryorder:'array',categoryarray:['Morning','Afternoon','Evening'],gridcolor:'#E8E4DA'},
+    yaxis:{type:'linear',range:[0,9.5],gridcolor:'#E8E4DA',title:'Cancellation rate (%)'}
+  }),
+  cfg
+);
+
+Plotly.newPlot(
+  'stores',
+  [{
+    type:'bar',
+    orientation:'h',
+    y:['C029','C024','C002','C037','C007','C005','C018','C033'],
+    x:[6.50,7.39,7.99,8.27,9.35,10.22,12.52,15.63],
+    marker:{color:'#F08C46'},
+    hovertemplate:'%{y}<br>Excess cancellations %{x:.2f}<extra></extra>'
+  }],
+  layoutBase({
+    xaxis:{type:'linear',gridcolor:'#E8E4DA',title:'Excess cancellations vs Retailer C baseline'},
+    yaxis:{type:'category',categoryorder:'array',categoryarray:['C029','C024','C002','C037','C007','C005','C018','C033'],gridcolor:'#E8E4DA'}
+  }),
+  cfg
+);
+
+const retailers = ['A','B','C','D','E','F'];
+Plotly.newPlot(
+  'alerts',
+  [
+    {type:'bar',name:'Rolling 14d + 2σ',x:retailers,y:[1,2,1,0,2,3],marker:{color:'#B7BBB5'}},
+    {type:'bar',name:'Fixed baseline',x:retailers,y:[0,1,12,0,0,4],marker:{color:'#2A9D5B'}},
+    {type:'bar',name:'3-day sustained',x:retailers,y:[0,0,6,0,0,1],marker:{color:'#F08C46'}}
+  ],
+  layoutBase({
+    barmode:'group',
+    legend:{orientation:'h'},
+    xaxis:{type:'category',categoryorder:'array',categoryarray:retailers,gridcolor:'#E8E4DA',title:'Retailer'},
+    yaxis:{type:'linear',range:[0,13],gridcolor:'#E8E4DA',title:'September alerts'}
+  }),
+  cfg
+);
+
+Plotly.newPlot(
+  'root',
+  [{
+    type:'bar',
+    orientation:'h',
+    y:['instacart_driven','unbatchable','shopper_driven','customer_driven','other','retailer_driven'],
+    x:[3.0,10.7,14.5,14.8,16.3,40.8],
+    marker:{color:['#BCC0BA','#BCC0BA','#BCC0BA','#BCC0BA','#BCC0BA','#2A9D5B']},
+    text:['3.0%','10.7%','14.5%','14.8%','16.3%','40.8%'],
+    textposition:'outside',
+    hovertemplate:'%{y}<br>%{x:.1f}%<extra></extra>'
+  }],
+  layoutBase({
+    xaxis:{type:'linear',range:[0,45],gridcolor:'#E8E4DA',title:'Share of cancellations (%)'},
+    yaxis:{type:'category',categoryorder:'array',categoryarray:['instacart_driven','unbatchable','shopper_driven','customer_driven','other','retailer_driven'],gridcolor:'#E8E4DA'}
+  }),
+  cfg
+);
+
+const els = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('on');
+}), {threshold:.12});
+els.forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
