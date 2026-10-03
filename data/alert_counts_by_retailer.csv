@@ -1,0 +1,7 @@
+retailer,rolling14_alerts,fixed_baseline_alerts,sustained_alerts
+Retailer A,1,0,0
+Retailer B,2,1,0
+Retailer C,1,12,6
+Retailer D,0,0,0
+Retailer E,2,0,0
+Retailer F,3,4,1
