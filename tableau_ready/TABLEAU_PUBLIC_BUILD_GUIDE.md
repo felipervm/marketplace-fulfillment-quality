@@ -1,20 +1,55 @@
 # Tableau Public Build Guide
 
-The repository includes lightweight analysis outputs in `data/`. For a full refresh:
+The repository exports tidy, lightweight CSVs for an optional Tableau Public build. The dashboard is intentionally not included here.
 
-1. Run `python scripts/generate_simulated_data.py`
-2. Run `python scripts/build_analysis_outputs.py`
+## Refresh
 
-Recommended views:
+```bash
+python scripts/generate_simulated_data.py
+python scripts/build_analysis_outputs.py
+python scripts/check_outputs.py
+```
 
-1. **Monthly cancellation trend** — `data/monthly_retailer_metrics.csv`
-2. **September retailer comparison** — `data/september_retailer_scorecard.csv`
-3. **Daypart rate + 95% CI** — `data/retailer_c_daypart_with_ci.csv`
-4. **Store impact** — `data/retailer_c_store_metrics.csv`
-5. **Root-cause mix** — `data/retailer_c_root_cause_share.csv`
-6. **Monitoring-method comparison** — `data/alert_counts_by_retailer.csv`
-7. **Province quality cut** — `data/september_province_scorecard.csv`
+## Recommended views
 
-Required transparency note: all data is simulated, and the September Retailer C issue is intentionally injected to test detection and diagnosis.
+1. **Monthly Retailer C cancellation rate + 95% Wilson CI**  
+   `tableau_ready/monthly_retailer_metrics.csv`
+
+2. **September retailer comparison + 95% Wilson CI**  
+   `tableau_ready/september_retailer_scorecard.csv`
+
+3. **Retailer C September daypart + 95% Wilson CI**  
+   `tableau_ready/retailer_c_daypart_with_ci.csv`
+
+4. **Impact sizing with two baselines**  
+   `tableau_ready/impact_baselines.csv`
+
+5. **Root-cause change by reason**  
+   `tableau_ready/root_cause_change_by_reason.csv`
+
+6. **Root-cause change by cancellation type**  
+   `tableau_ready/root_cause_change_by_type.csv`
+
+7. **Daypart-adjusted store excess**  
+   `tableau_ready/retailer_c_store_adjusted_excess.csv`
+
+8. **Monitoring alert days and episodes**  
+   `tableau_ready/monitor_alert_summary.csv`
+
+9. **Monitoring daily detail**  
+   `tableau_ready/monitor_alert_detail.csv`
+
+## Suggested dashboard structure
+
+- Executive trend and impact range
+- Driver change per 1,000 orders
+- Daypart rate with confidence intervals
+- Store concentration and Poisson flag
+- Monitoring rule comparison
+- Methodology and limitations
+
+## Required transparency note
+
+All data is simulated. A September Retailer C deterioration is intentionally injected to test detection and diagnosis. No proprietary marketplace data is used, and the analysis does not establish real-world causal effects.
 
 Suggested dashboard title: **Marketplace Fulfillment Quality Diagnostic**.
