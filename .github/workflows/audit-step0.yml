@@ -1,9 +1,6 @@
 name: Step 0 audit verification
 
 on:
-  push:
-    branches:
-      - audit/step0-verification
   pull_request:
     branches:
       - main
@@ -77,15 +74,3 @@ jobs:
             cat "$f"
           done
 
-      - name: Commit generated analytical outputs
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -u data tableau_ready
-          git ls-files --others --exclude-standard data tableau_ready | xargs -r git add --
-          if git diff --cached --quiet; then
-            echo "No generated output changes to commit."
-          else
-            git commit -m "data: refresh audited analytical outputs [generated]"
-            git push origin HEAD:audit/step0-verification
-          fi
