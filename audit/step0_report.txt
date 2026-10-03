@@ -1,0 +1,51 @@
+STEP 0 CLEAN-RUN VERIFICATION
+=============================
+rows=100000
+Retailer C 2026-07: orders=6661 cancellations=226 rate=3.3928839514%
+Retailer C 2026-08: orders=6746 cancellations=196 rate=2.9054254373%
+Retailer C 2026-09: orders=6580 cancellations=338 rate=5.1367781155%
+Peers Sep excl C: orders=26352 cancellations=701 rate=2.6601396478%
+Gap vs peers pp=2.4766384677
+Excess vs peers=162.9628111718
+Retailer C Jul-Aug: orders=13407 cancellations=422 rate=3.1476094577%
+Excess vs own Jul-Aug=130.8872976803
+C Sep Afternoon: n=2685 cancels=65 rate=2.4208566108%
+C Sep Evening: n=2999 cancels=240 rate=8.0026675559%
+C Sep Morning: n=896 cancels=33 rate=3.6830357143%
+Retailer-driven: 138/338 = 40.8284023669%
+Retailer-initiated OOS: 99/338 = 29.2899408284%
+Early closures evening: 20/29
+
+ALERT COUNTS
+  retailer  rolling14_alerts  fixed_baseline_alerts  sustained_alerts
+Retailer A                 1                      0                 0
+Retailer B                 2                      1                 0
+Retailer C                 1                     12                 6
+Retailer D                 0                      0                 0
+Retailer E                 2                      0                 0
+Retailer F                 3                      4                 1
+
+COMMITTED OUTPUT DIFF AFTER REBUILD
+diff --git a/data/retailer_c_daypart_with_ci.csv b/data/retailer_c_daypart_with_ci.csv
+index dd7f07c..baf884f 100644
+--- a/data/retailer_c_daypart_with_ci.csv
++++ b/data/retailer_c_daypart_with_ci.csv
+@@ -1,4 +1,4 @@
+ daypart,orders,cancellations,rate_pct,ci_low_pct,ci_high_pct
+ Morning,896,33,3.6830357142857144,2.6343574123561213,5.127186397132126
+-Afternoon,2685,65,2.420856610800745,1.9039233512594271,3.073744355161062
++Afternoon,2685,65,2.4208566108007448,1.9039233512594271,3.073744355161062
+ Evening,2999,240,8.00266755585195,7.084411065205493,9.028380232210925
+diff --git a/data/retailer_c_root_cause_share.csv b/data/retailer_c_root_cause_share.csv
+index 25c0249..fb19f5b 100644
+--- a/data/retailer_c_root_cause_share.csv
++++ b/data/retailer_c_root_cause_share.csv
+@@ -2,6 +2,6 @@ cancellation_reason,cancellations,share_pct
+ retailer_driven,138,40.8284
+ other,55,16.2722
+ customer_driven,50,14.7929
+-shopper_driven,49,14.4970
++shopper_driven,49,14.497
+ unbatchable,36,10.6509
+ instacart_driven,10,2.9586
+
